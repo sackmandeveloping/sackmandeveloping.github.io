@@ -1,11 +1,307 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Sackman Developing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sackman Developing | Futbol Quiz: Ultimate Test</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-gray: #1e1e1e;
+            --primary-purple: #a855f7;
+            --primary-yellow: #facc15;
+            --text-light: #f3f4f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary-purple);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-yellow);
+        }
+
+        .logo-container h1 {
+            font-size: 1.2rem;
+            color: var(--primary-yellow);
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 5% 50px;
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.95)), url('landscape.webp') center/cover;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            width: 100%;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-yellow), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #d1d5db;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-yellow);
+            color: var(--bg-dark);
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background-color: #eab308;
+            box-shadow: 0 6px 20px rgba(250, 204, 21, 0.6);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .app-logo {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 30px;
+            box-shadow: 0 0 40px rgba(168, 85, 247, 0.3);
+            border: 4px solid var(--primary-purple);
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 80px 5%;
+            background-color: var(--bg-gray);
+            text-align: center;
+        }
+
+        .screenshots h3 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-yellow);
+        }
+
+        .gallery-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-purple) var(--bg-dark);
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .gallery-container::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+            border-radius: 10px;
+        }
+
+        .gallery-container::-webkit-scrollbar-thumb {
+            background-color: var(--primary-purple);
+            border-radius: 10px;
+        }
+
+        .gallery-item {
+            flex: 0 0 auto;
+            width: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: var(--primary-yellow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .banner-img {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: block;
+        }
+
+        /* Contact & Footer */
+        footer {
+            background-color: var(--bg-dark);
+            padding: 50px 5% 20px;
+            text-align: center;
+            border-top: 2px solid var(--primary-purple);
+        }
+
+        .contact-info {
+            background-color: var(--bg-gray);
+            display: inline-block;
+            padding: 20px 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .contact-info h4 {
+            color: var(--primary-yellow);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary-purple);
+        }
+
+        .copyright {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-text h2 { font-size: 2.2rem; }
+            .hero { padding-top: 120px; text-align: center; }
+            .hero-content { justify-content: center; }
+            .gallery-item { width: 200px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Contact email:</h1>
-    <p>sackmandeveloping@gmail.com</p>
+
+    <header>
+        <div class="logo-container">
+            <img src="sackman logo.jpg" alt="Sackman Developing Logo">
+            <h1>SACKMAN DEVELOPING</h1>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Futbol Bilgini Ultimate Test ile Kanıtla!</h2>
+                <p>Kariyer Yolu, Forma Dedektifi, 1v1 Çok Oyunculu Arena ve çok daha fazlası. Yüzlerce oyuncu, güncel transferler ve zorlu modlarla en iyi futbol quiz deneyimi şimdi Play Store'da.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.sackman.footballquizuc" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    Play Store'dan İndir
+                </a>
+            </div>
+            <div class="hero-image">
+                <img src="logo_cropped.png" alt="Futbol Quiz Ultimate Test Logo" class="app-logo">
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        <h3>Efsanevi Oyun Modları</h3>
+        
+        <div class="gallery-container">
+            <div class="gallery-item"><img src="tr_1v1.png" alt="1v1 Çok Oyunculu"></div>
+            <div class="gallery-item"><img src="kariyeryolu.jpg" alt="Kariyer Yolu"></div>
+            <div class="gallery-item"><img src="tr_market.png" alt="Piyasa Ustası"></div>
+            <div class="gallery-item"><img src="tr_rating.png" alt="Reyting Kapışması"></div>
+            <div class="gallery-item"><img src="tr_kit.png" alt="Forma Dedektifi"></div>
+            <div class="gallery-item"><img src="benkimim.jpg" alt="Ben Kimim"></div>
+            <div class="gallery-item"><img src="ikitakımbiroyuncu.jpg" alt="2 Takım 1 Oyuncu"></div>
+            <div class="gallery-item"><img src="logoquiz.png" alt="Logo Quiz"></div>
+            <div class="gallery-item"><img src="tr_challenges.png" alt="Görevler"></div>
+        </div>
+
+        <img src="playstoredayayında.webp" alt="Play Store'da Yayında Banner" class="banner-img">
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <h4>İletişime Geçin</h4>
+            <a href="mailto:sackmandeveloping@gmail.com">sackmandeveloping@gmail.com</a>
+        </div>
+        <p class="copyright">&copy; 2026 Sackman Developing. Tüm hakları saklıdır.</p>
+    </footer>
+
 </body>
 </html>
